@@ -1,0 +1,13 @@
+<div class="layout-wrapper" [ngClass]="containerClass">
+    <admin-topbar></admin-topbar>
+    <div class="layout-sidebar" [ngClass]="{'layout-static-inactive': !layoutService.state.sidebarVisible}">
+        <admin-sidebar></admin-sidebar>
+    </div>
+    <div class="layout-main-container">
+        <div class="layout-main">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- <app-config></app-config> -->
+    <div class="layout-mask"></div>
+</div>

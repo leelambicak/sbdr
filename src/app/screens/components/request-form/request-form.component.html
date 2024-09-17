@@ -1,0 +1,318 @@
+<div>
+    <div *ngIf="loading">
+        Loading...
+    </div>
+    <div class="grid col p-10" *ngIf="!loading">
+        <div class="col-12">
+            <div class="card">
+                <div class="text-center" style="font-family: Candara;">
+                    <h2 class="m-0"><u>PROPERTY OWNER’S REQUEST FOR ASSISTANCE</u></h2>
+                    <h3 class="m-0">SOUTHERN BAPTIST DISASTER RELIEF – REGION 4A</h3>
+                    <h5 class="m-0 pt-2 pb-4">Arkansas, Texas-TBM, Texas-SBTC, Missouri, Louisiana, Oklahoma</h5>
+                    <h4><u>THIS IS NOT A CONTRACT TO PROVIDE SERVICES</u></h4>
+                </div>
+                <div [formGroup]="ownerForm">
+                    <div class="radio-field">
+                        <!-- color: #5e5d5d; -->
+                        <div style="font-size: 16px;font-weight: 600;">
+                            WORK NEEDED:
+                        </div>
+                        <div class="col input-checkbox">
+                            <div *ngFor="let item of defaultForm.works">
+                                <p-checkbox name="works" formControlName="works" [value]="item"
+                                    [(ngModel)]="ownerForm.value.works" label="{{ item.name }}">
+                                </p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio-field">
+                        <!-- color: #5e5d5d; -->
+                        <div style="font-size: 16px;font-weight: 600;">
+                            OTHER NEEDS:
+                        </div>
+                        <div class="col input-checkbox">
+                            <div *ngFor="let item of defaultForm.otherneeds">
+                                <p-checkbox name="otherneeds" formControlName="otherneeds" [value]="item"
+                                    [(ngModel)]="ownerForm.value.otherneeds" label="{{ item.name }}">
+                                </p-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col pl-0 pr-0">
+                        <!-- color: #5e5d5d; -->
+                        <div style="font-size: 16px;font-weight: 600;">
+                            Brief Description of Work/Need:
+                        </div>
+                        <textarea formControlName="description" name="description" id="description" pInputTextarea
+                            rows="3" cols="20"></textarea>
+                    </div>
+                    <div class="card">
+                        <!-- color: #5e5d5d; -->
+                        <div class="pb-2" style="font-size: 16px;font-weight: 600;border-bottom: 1px solid gray;">
+                            PROPERTY OWNER INFORMATION:
+                        </div>
+                        <div class="pt-2">
+                            <div class="flex">
+                                <div class="field col-6 pl-0">
+                                    <span class="p-float-label">
+                                        <input formControlName="name" name="name" pInputText id="name" type="text" />
+                                        <label for="name">Name</label>
+                                    </span>
+                                </div>
+                                <div class="field col-6 pl-0">
+                                    <span class="p-float-label">
+                                        <input formControlName="email" name="email" pInputText id="email" type="text"
+                                            placeholder="Property Owner Email" />
+                                        <label for="email">Property Owner Email</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="field col pl-0">
+                                    <span class="p-float-label">
+                                        <input formControlName="phone_h" pInputText id="phone(h)" type="text" />
+                                        <label for="phone(h)">Phone (h5)</label>
+                                    </span>
+                                </div>
+                                <div class="field col pl-0">
+                                    <span class="p-float-label">
+                                        <input formControlName="_w" pInputText id="(w)" type="text" />
+                                        <label for="(w)">(W)</label>
+                                    </span>
+                                </div>
+                                <div class="field col pl-0">
+                                    <span class="p-float-label">
+                                        <input formControlName="_c" pInputText id="(c)" type="text" />
+                                        <label for="(c)">(C)</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="radio-field">
+                                <!-- color: #5e5d5d; -->
+                                <div style="font-size: 16px;font-weight: 600;">
+                                    Insurance:
+                                </div>
+                                <div class="flex col input-radio">
+                                    <div *ngFor="let option of defaultForm.insuranceTypes">
+                                        <p-radioButton name="insuranceTypes" [value]="option"
+                                            formControlName="insuranceTypes"
+                                            [(ngModel)]="ownerForm.value.insuranceTypes"
+                                            label="{{option.name}}"></p-radioButton>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="radio-field">
+                                <!-- color: #5e5d5d; -->
+                                <div style="font-size: 16px;font-weight: 600;" class="flex">
+                                    Property Owner Must Be Present During Work?
+                                    <div class="field-radiobutton col-1 pt-0">
+                                        <p-radioButton formControlName="duringwork" id="duringwork1" name="duringwork"
+                                            value="Yes"></p-radioButton>
+                                        <label for="duringwork1">Yes</label>
+                                    </div>
+                                    <div class="field-radiobutton col-1 pt-0">
+                                        <p-radioButton formControlName="duringwork" id="duringwork2" name="duringwork"
+                                            value="No"></p-radioButton>
+                                        <label for="duringwork2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="radio-field">
+                                <!-- color: #5e5d5d; -->
+                                <div style="font-size: 16px;font-weight: 600;" class="flex">
+                                    Property Owner Permission to Take Pictures of Property?
+                                    <div class="field-radiobutton col-1 pt-0">
+                                        <p-radioButton formControlName="pictureOfProperty" id="pictureOfProperty1"
+                                            name="pictureOfProperty" value="Yes"></p-radioButton>
+                                        <label for="pictureOfProperty1">Yes</label>
+                                    </div>
+                                    <div class="field-radiobutton col-1 pt-0">
+                                        <p-radioButton formControlName="pictureOfProperty" id="pictureOfProperty2"
+                                            name="pictureOfProperty" value="No"></p-radioButton>
+                                        <label for="pictureOfProperty2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <!-- color: #5e5d5d; -->
+                        <div style="font-size: 16px;font-weight: 600;">
+                            PROPERTY DESCRIPTION:
+                        </div>
+                        <div class="flex col input-radio">
+                            <div *ngFor="let item of defaultForm.propertyStatus">
+                                <p-radioButton name="propertyStatus" [value]="item" formControlName="propertyStatus"
+                                    [(ngModel)]="ownerForm.value.propertyStatus" label="{{item.name}}"></p-radioButton>
+                            </div>
+                        </div>
+                        <div class="field col pl-0">
+                            <span class="p-float-label">
+                                <input formControlName="address" pInputText id="address" type="text" />
+                                <label for="address">Address (Number & Street)</label>
+                            </span>
+                        </div>
+                        <div class="flex">
+                            <div class="field col pl-0">
+                                <span class="p-float-label">
+                                    <input formControlName="city" pInputText id="city" type="text" />
+                                    <label for="city">City</label>
+                                </span>
+                            </div>
+                            <div class="field col pl-0">
+                                <span class="p-float-label">
+                                    <p-dropdown inputId="state" name="state" [options]="defaultForm.states"
+                                        formControlName="state" optionLabel="name"></p-dropdown>
+                                    <label for="dropdown">State</label>
+                                </span>
+                                <!-- <span class="p-float-label">
+                                <input formControlName="state" pInputText id="state" type="text" />
+                                <label for="state">State</label>
+                            </span> -->
+                            </div>
+                            <div class="field col pl-0">
+                                <span class="p-float-label">
+                                    <input formControlName="zipcode" pInputText id="zipcode" type="text" />
+                                    <label for="zipcode">Zipcode</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="radio-field">
+                            <!-- color: #5e5d5d; -->
+                            <div style="font-size: 16px;font-weight: 600;">
+                                Property Type:
+                            </div>
+                            <div class="flex col input-radio">
+                                <div *ngFor="let item of defaultForm.propertyTypes">
+                                    <p-radioButton name="propertyType" [value]="item" formControlName="propertyType"
+                                        [(ngModel)]="ownerForm.value.propertyType"
+                                        label="{{item.name}}"></p-radioButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <!-- color: #5e5d5d; -->
+                        <div style="font-size: 16px;font-weight: 600;">
+                            OCCUPANT INFORMATION:
+                        </div>
+                        <div class="flex col input-radio">
+                            <div *ngFor="let item of defaultForm.occupantTypes">
+                                <p-radioButton name="occupant" [value]="item" formControlName="occupant"
+                                    [(ngModel)]="ownerForm.value.occupant" label="{{item.name}}"></p-radioButton>
+                            </div>
+                        </div>
+                        <!-- <div class="radio-field">
+                        <div class="flex">
+                            <div class="field-radiobutton col-4">
+                                <p-radioButton formControlName="occupant" id="occupant1" name="occupant" value="Significate Health Issues or Circumstances"></p-radioButton>
+                                <label for="occupant1">Significate Health Issues or Circumstances</label>
+                            </div>
+                            <div class="field-radiobutton col-2">
+                                <p-radioButton formControlName="occupant" id="occupant2" name="occupant" value="First Responder"></p-radioButton>
+                                <label for="occupant2">First Responder</label>
+                            </div>
+                            <div class="field-radiobutton col-3">
+                                <p-radioButton formControlName="occupant" id="occupant3" name="occupant" value="Elderly Living Alone"></p-radioButton>
+                                <label for="occupant3">Elderly Living Alone</label>
+                            </div>
+                            <div class="field-radiobutton col-2">
+                                <p-radioButton formControlName="occupant" id="occupant4" name="occupant" value="Other"></p-radioButton>
+                                <label for="occupant4">Other</label>
+                            </div>
+                        </div>
+                    </div> -->
+                        <div class="field col pl-0">
+                            <span class="p-float-label">
+                                <input pInputText formControlName="otherowner" id="otherowner" type="text" />
+                                <label for="otherowner">Name (If other than Owner)</label>
+                            </span>
+                        </div>
+                        <div class="flex">
+                            <div class="field col pl-0">
+                                <span class="p-float-label">
+                                    <input formControlName="phone_h2" pInputText id="phone(h)2" type="text" />
+                                    <label for="phone(h)2">Phone (H)</label>
+                                </span>
+                            </div>
+                            <div class="field col pl-0">
+                                <span class="p-float-label">
+                                    <input formControlName="_w2" pInputText id="(w)2" type="text" />
+                                    <label for="(w)2">(W)</label>
+                                </span>
+                            </div>
+                            <div class="field col pl-0">
+                                <span class="p-float-label">
+                                    <input formControlName="_c2" pInputText id="(c)2" type="text" />
+                                    <label for="(c)2">(C)</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="flex col pb-0">
+                            <div class="pt-2">I,</div>
+                            <div class="col p-0 letter-input ml-1">
+                                <input formControlName="printname" pInputText id="printname" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="col pt-0">
+                            hereby release from liability and agree to hold harmless the Southern Baptist Convention
+                            Disaster Relief
+                            Volunteers, their representatives, agents and or employees for any damage or injury that may
+                            occur on my
+                            property, including personal property or to my person, which may occur during the cleanup
+                            operation. I
+                            further understand and agree that there is no warranty, implied, written or oral, for any
+                            work performed on
+                            my property by said volunteers. I understand that the Southern Baptist Disaster Relief is a
+                            volunteer
+                            organization that has limited volunteers, limited financial and material resources, and
+                            makes no
+                            guarantee that said service will be provided. Additionally, I further understand THAT THIS
+                            IS
+                            NOT A CONTRACT TO PROVIDE SERVICES!
+                        </div>
+                        <div class="text-center">
+                            <h3><u>Must be signed before work can be assigned to a team</u></h3>
+                        </div>
+                        <div class="flex">
+                            <div class="field col-6">
+                                <span class="p-float-label">
+                                    <input formControlName="signature" pInputText id="signature" type="text" />
+                                    <label for="signature">Property Owner’s Signature</label>
+                                </span>
+                            </div>
+                            <div class="field col-6">
+                                <span class="p-float-label">
+                                    <p-calendar formControlName="date" inputId="date"></p-calendar>
+                                    <label for="date">Date</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="field col-6">
+                                <span class="p-float-label">
+                                    <input formControlName="workcomplete" pInputText id="workcomplete" type="text" />
+                                    <label for="workcomplete">Work Complete By (Blue Cap)</label>
+                                </span>
+                            </div>
+                            <div class="field col-6">
+                                <span class="p-float-label">
+                                    <p-calendar formControlName="datecompleted" inputId="datecompleted"></p-calendar>
+                                    <label for="datecompleted">Date Completed</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col pr-0">
+                <div class="flex justify-content-end">
+                    <p-button label="submit" (onClick)="submitForm()"></p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

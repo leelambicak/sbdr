@@ -1,0 +1,39 @@
+::ng-deep {
+    .p-inputtext {
+        width: 100% !important;
+    }
+    .p-calendar {
+        width: 100%;
+    }
+    .p-checkbox-label, .p-radiobutton-label {
+        cursor: pointer;
+        padding: 10px;
+        padding-left: 0px;
+        width: fit-content;
+    }
+    .p-dropdown {
+        width: 100%;
+    }
+
+}
+.input-checkbox {
+    display: flex;
+}
+@media (max-width: 1200px) {
+    .input-checkbox {
+        display: block !important;
+    }
+    .input-radio {
+        display: block !important;
+    }
+}
+.letter-input {
+    ::ng-deep.p-inputtext, .p-inputtext:enabled:focus{
+        background: transparent;
+        box-shadow: none !important;
+        padding-bottom: 0px !important;
+        padding-left: 0px !important;
+        border-width: 0px 0px 1px 0px !important;
+    }
+}
+  
